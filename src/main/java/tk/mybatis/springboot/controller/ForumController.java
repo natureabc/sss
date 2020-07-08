@@ -67,7 +67,6 @@ public class ForumController {
 
     @RequestMapping("getLabelList")
     public Object getLabelList(){
-
         return forumService.getLabelList();
     }
 
