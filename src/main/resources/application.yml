@@ -1,6 +1,6 @@
 server:
     port: 9090
-    #context-path:
+#    context-path: /
 
 logging:
     level:
@@ -28,10 +28,10 @@ spring:
         testOnReturn: false
         poolPreparedStatements: true
         maxOpenPreparedStatements: 20
-    mvc:
-        view:
-            prefix: /templates/
-            suffix: .ftl
+#    mvc:
+#        view:
+#            prefix: /templates/
+#            suffix: .ftl
 #    data:
 #        mongodb:
 #            host: 127.0.0.1

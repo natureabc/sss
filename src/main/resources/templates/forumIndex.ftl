@@ -42,8 +42,8 @@
     <div class="wp">
 
 
-        <div class="hdc cl">
-            <a href="http://www.shsxs.com/"><img src="http://www.neimaedu.com/images/index/3.jpg" style="width:300px;height:50px;"/></a>
+        <div >
+            <a href="http://www.shsxs.com/"><img src="http://www.neimaedu.com/images/index/3.jpg" style="width:960px;height:180px"/></a>
             <div class="login"><!--start login-->
 
                 <!--头部banner百度广告位-->
@@ -163,7 +163,26 @@
     <!--start .siderbar-->
     <div class="sidebar">
         <#--<script type="text/javascript" src="http://www.shsxs.com//content/plugins/em_ad/em_ad_js.php?pos=2"></script>-->
+
+        <div class="side_box">
+            <h3><span>logo</span></h3>
+            <div>
+               <img src="/img/ewm.jpg" style="width:250px;height:250px"/>
+            </div>
+        </div>
+        <div class="side_box">
+            <div>
+                <img src="/img/gg.jpg" style="width:250px;height:250px"/>
+            </div>
+        </div>
+        <div class="side_box">
+            <h3><span>加入我们</span></h3>
+            <div>
+                <img src="/img/ewm.jpg" style="width:250px;height:250px"/>
+            </div>
+        </div>
         <div id="twitter" class="side_box">
+
             <h3><span>最新情况</span></h3>
             <ul id="newSatuation">
 
@@ -171,17 +190,7 @@
             <p align="right"><a href="/forum/getSatutionDetail">更多&raquo;&nbsp;&nbsp;&nbsp;&nbsp;</a></p>
 
         </div>
-        <div class="side_box">
-            <h3><span>试卷下载</span></h3>
-            <div>
-                <br>
-                &nbsp;&nbsp;&nbsp;<a href="http://www.shsxs.com/post/926.html" color="red">历年五月三校生高考真题下载</a>
-                <br>
-                <br>
-                &nbsp;&nbsp;&nbsp;<a href="http://www.shsxs.com/post/927.html">历年三月专科自主招生考试真题下载</a>
-                <br>
-                <br></div>
-        </div>
+
         <div id="sort" class="side_box">
             <h3><span>分类</span></h3>
             <ul id="keywordList">
@@ -195,62 +204,11 @@
 
 		</span>
         </div>
-        <div class="side_box" id="hotlog">
-            <h3><span>热门文章</span></h3>
-            <ul>
-                <li><a href="http://www.shsxs.com/post/1482.html">2019年上海专科层次依法自主招生简章汇总（更新完毕）</a></li>
-                <li><a href="http://www.shsxs.com/post/1183.html">2018年上海专科层次依法自主招生简章汇总（更新完毕）</a></li>
-                <li><a href="http://www.shsxs.com/post/1346.html">2018年上海五月三校生高考招生简章汇总（更新完毕）</a></li>
-                <li><a href="http://www.shsxs.com/post/1813.html">2020年上海专科层次依法自主招生简章汇总（更新完毕）</a></li>
-                <li><a href="http://www.shsxs.com/post/1583.html">2019年上海专科自主招生资格线/录取分数线汇总/录取名单</a></li>
-            </ul>
-        </div>
-        <div class="space"></div>
-        <div class="side_box" id="link">
-            <h3><span>链接</span></h3>
-            <ul>
-                <li><a href="http://www.shsxs.com" title="" target="_blank">三校生之家</a></li>
-            </ul>
-        </div>
-        <div class="space"></div>
-        <div id="record" class="side_box">
-            <h3><span>存档</span></h3>
-            <ul>
-                <li><a href="http://www.shsxs.com/record/202005/index.html">2020年5月(1)</a></li>
-                <li><a href="http://www.shsxs.com/record/202004/index.html">2020年4月(63)</a></li>
-                <li><a href="http://www.shsxs.com/record/202003/index.html">2020年3月(49)</a></li>
-                <li><a href="http://www.shsxs.com/record/202002/index.html">2020年2月(1)</a></li>
-                <li><a href="http://www.shsxs.com/record/202001/index.html">2020年1月(3)</a></li>
-                <li><a href="http://www.shsxs.com/record/201912/index.html">2019年12月(6)</a></li>
-                <li><a href="http://www.shsxs.com/record/201911/index.html">2019年11月(4)</a></li>
-                <li><a href="http://www.shsxs.com/record/201910/index.html">2019年10月(7)</a></li>
-                <li><a href="http://www.shsxs.com/record/201909/index.html">2019年9月(13)</a></li>
-                <li><a href="http://www.shsxs.com/record/201908/index.html">2019年8月(2)</a></li>
-                <li><a href="http://www.shsxs.com/record/201907/index.html">2019年7月(15)</a></li>
-                <li><a href="http://www.shsxs.com/record/201906/index.html">2019年6月(6)</a></li>
-                <li><a href="http://www.shsxs.com/record/201905/index.html">2019年5月(28)</a></li>
-                <li><a href="http://www.shsxs.com/record/201904/index.html">2019年4月(128)</a></li>
-                <li><a href="http://www.shsxs.com/record/201903/index.html">2019年3月(56)</a></li>
-                <li><a href="http://www.shsxs.com/record/201902/index.html">2019年2月(55)</a></li>
-                <li><a href="http://www.shsxs.com/record/201901/index.html">2019年1月(8)</a></li>
-                <li><a href="http://www.shsxs.com/record/201812/index.html">2018年12月(6)</a></li>
-                <li><a href="http://www.shsxs.com/record/201811/index.html">2018年11月(6)</a></li>
-                <li><a href="http://www.shsxs.com/record/201810/index.html">2018年10月(2)</a></li>
-                <li><a href="http://www.shsxs.com/record/201808/index.html">2018年8月(4)</a></li>
-                <li><a href="http://www.shsxs.com/record/201806/index.html">2018年6月(13)</a></li>
-                <li><a href="http://www.shsxs.com/record/201805/index.html">2018年5月(23)</a></li>
-                <li><a href="http://www.shsxs.com/record/201804/index.html">2018年4月(107)</a></li>
-                <li><a href="http://www.shsxs.com/record/201803/index.html">2018年3月(82)</a></li>
-                <li><a href="http://www.shsxs.com/record/201802/index.html">2018年2月(45)</a></li>
-                <li><a href="http://www.shsxs.com/record/201801/index.html">2018年1月(17)</a></li>
-                <li><a href="http://www.shsxs.com/record/201712/index.html">2017年12月(31)</a></li>
-                <li><a href="http://www.shsxs.com/record/201711/index.html">2017年11月(43)</a></li>
-                <li><a href="http://www.shsxs.com/record/201710/index.html">2017年10月(38)</a></li>
-                <li><a href="http://www.shsxs.com/record/201709/index.html">2017年9月(921)</a></li>
-                <li><a href="http://www.shsxs.com/record/201708/index.html">2017年8月(29)</a></li>
-            </ul>
-        </div>
-    </div>
+
+
+
+
+
     <!--end .siderbar-->
     ﻿
     <div style="clear:both;"></div>

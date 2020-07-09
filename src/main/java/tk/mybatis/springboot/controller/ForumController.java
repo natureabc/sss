@@ -1,6 +1,7 @@
 package tk.mybatis.springboot.controller;
 
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -23,6 +24,7 @@ public class ForumController {
     @RequestMapping("index")
     public ModelAndView toIndex(){
         return new ModelAndView("forumIndex");
+
     }
 
     @RequestMapping("getAllList")

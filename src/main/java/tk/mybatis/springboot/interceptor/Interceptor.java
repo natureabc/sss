@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 public class Interceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
-        if (o instanceof HandlerMethod) {
+     /*   if (o instanceof HandlerMethod) {
             HttpSession session = httpServletRequest.getSession();
             Object obj = session.getAttribute("user");
             if (null == obj) {
@@ -21,7 +21,8 @@ public class Interceptor implements HandlerInterceptor {
             return true;
         } else {
             return true;
-        }
+        }*/
+     return true;
     }
 
     @Override
