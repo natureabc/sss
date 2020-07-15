@@ -51,18 +51,18 @@
         </div>
 
 
-        <div class="hdc cl">
+        <#--<div class="hdc cl">
             <h1 class="logo"><a href="http://www.shsxs.com/"><img src="/img/fkbf.jpg" style="width:300px;height:50px;"/></a></h1>
-            <div class="login"><!--start login-->
+            <div class="login"><!--start login&ndash;&gt;
 
-                <!--头部banner百度广告位-->
-            </div><!--end login-->
-        </div>
+                <!--头部banner百度广告位&ndash;&gt;
+            </div><!--end login&ndash;&gt;
+        </div>-->
 
         <div class="space"></div>
 
         <div class="nv">
-            <ul id="nv">
+            <ul id="nv" id="nv_title">
                 <li class="current-cat"><a href="/forum/index">首页</a></li>
                 <li class="common"><a href="/forum/index">三校生高考</a></li>
                 <li class="common"><a href="/forum/index">专科自主招生考试</a></li>
@@ -87,13 +87,13 @@
     <script type="text/javascript" src="http://www.shsxs.com//content/plugins/em_ad/em_ad_js.php?pos=10"></script>
     <!--首页两格学校-->
 
-    <span class="serch">
-	<form name="keyform" id="searchform" method="get" action="http://www.shsxs.com/index.php">
-    <input name="keyword" id="s" class="text" type="text" value="输入关键词" onfocus="if(this.value=='输入关键词') this.value=''"
-           onblur="if(this.value=='') this.value='输入关键词'">
-    <input name="keyword" class="submit" type="submit" value="搜索">
-    </form>
-</span>
+    <#--<span class="serch">
+        <form name="keyform" id="searchform" method="get" action="http://www.shsxs.com/index.php">
+            <input name="keyword" id="s" class="text" type="text" value="输入关键词" onfocus="if(this.value=='输入关键词') this.value=''"
+                   onblur="if(this.value=='') this.value='输入关键词'">
+            <input name="keyword" class="submit" type="submit" value="搜索">
+        </form>
+    </span>-->
 
     <div class="content">
       <#--  <div class="listtop">
@@ -202,7 +202,7 @@
             <span id="labelList">
 
 
-		</span>
+		    </span>
         </div>
 
 
@@ -389,7 +389,7 @@ var _hmt = _hmt || [];
                     if(data&&data.length>0){
                         var str="";
                         for(var i=0;i<data.length;i++){
-                            str+="  <a href='#'>"+data[i].labelName+"</a>";
+                            str+="  <a href='#' onclick='showList("+data[i].id+")'>"+data[i].labelName+"</a>";
                         }
                         $("#labelList").html(str);
                     }
