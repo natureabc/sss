@@ -12,6 +12,81 @@
     <script src="/js/ssscommon_tpl.js" type="text/javascript"></script>
     <script src="http://www.shsxs.com/content/templates/mi2/js/jquery.min.js"></script>
     <#--<script type="text/javascript" src="http://www.shsxs.com//content/plugins/em_ad/em_ad_common.js"></script>-->
+    <style type="text/css">
+        .banner {
+            position: relative;
+            /*margin: auto;*/
+            width: 960px;
+            height: 200px;
+            text-align: center;
+            font-family: Arial;
+            color: #FFF;
+            overflow: hidden;
+        }
+
+        .banner ul {
+            margin: 10px 0;
+            padding: 0;
+            width: 9999px;
+            transition: all 0.5s;
+        }
+
+        /*//自动播放*/
+        .banner .banner-auto {
+            animation: marginLeft 10.5s infinite;
+        }
+
+        .banner li {
+            float: left;
+            width: 960px;
+            height: 200px;
+            list-style: none;
+            line-height: 200px;
+            font-size: 36px;
+        }
+
+        .banner li:nth-child(1) {
+            background: #9fa8ef;
+        }
+
+        .banner li:nth-child(2) {
+            background: #ef9fb1;
+        }
+
+        .banner li:nth-child(3) {
+            background: #9fefc3;
+        }
+
+        @keyframes marginLeft {
+            0% {
+                margin-left: 0;
+            }
+
+            28.5% {
+                margin-left: 0;
+            }
+
+            33.3% {
+                margin-left: -960px;
+            }
+
+            62% {
+                margin-left: -960px;
+            }
+
+            66.7% {
+                margin-left: -1920px;
+            }
+
+            95.2% {
+                margin-left: -1920px;
+            }
+
+            100% {
+                margin-left: 0;
+            }
+        }
+    </style>
 </head>
 <body>
 <div class="cl" id="toptb">
@@ -42,8 +117,16 @@
     <div class="wp">
 
 
-        <div >
-            <a href="http://www.shsxs.com/"><img src="http://www.neimaedu.com/images/index/3.jpg" style="width:960px;height:180px"/></a>
+        <a >
+            <a href="#" >
+                <div class="banner">
+                    <ul class="banner-auto">
+                        <li><img src="/img/1.jpg" style="width:960px;height:200px"/></li>
+                        <li><img src="/img/2.jpg" style="width:960px;height:200px"/></li>
+                        <li><img src="/img/3.jpg" style="width:960px;height:200px"/></li>
+                    </ul>
+                </div>
+            </a>
             <div class="login"><!--start login-->
 
                 <!--头部banner百度广告位-->
@@ -61,7 +144,7 @@
 
         <div class="space"></div>
 
-        <div class="nv">
+        <div class="nv" style="margin:0 auto;width:960px;">
             <ul id="nv" id="nv_title">
                 <li class="current-cat"><a href="/forum/index">首页</a></li>
                 <li class="common"><a href="/forum/index">三校生高考</a></li>
