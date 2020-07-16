@@ -56,4 +56,7 @@
     <select id="getLabelList" resultType="tk.mybatis.springboot.model.vo.Label">
         select * from label
     </select>
+    <select id="getLabelListTitle" resultType="tk.mybatis.springboot.model.vo.Label">
+        select * from label where is_title=1
+    </select>
 </mapper>

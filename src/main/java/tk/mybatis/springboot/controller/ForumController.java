@@ -72,5 +72,12 @@ public class ForumController {
         return forumService.getLabelList();
     }
 
+    @RequestMapping("getToolTitle")
+    public Object getToolTitle(){
+
+        return forumService.getToolTitle();
+
+    }
+
 
 }

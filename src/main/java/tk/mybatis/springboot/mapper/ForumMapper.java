@@ -27,4 +27,6 @@ public interface ForumMapper extends MyMapper<Forum> {
     List<Keyword> getKeyWordList();
 
     List<Label> getLabelList();
+
+    List<Label> getLabelListTitle();
 }

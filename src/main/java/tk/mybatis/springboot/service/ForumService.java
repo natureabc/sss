@@ -85,4 +85,9 @@ public class ForumService {
         List<Label> list=forumMapper.getLabelList();
         return list;
     }
+
+    public List<Label> getToolTitle() {
+        List<Label> list=forumMapper.getLabelListTitle();
+        return list;
+    }
 }

@@ -47,7 +47,7 @@
 					请登录八阿哥系统</h2>
 			</div>
 			<div class="col-lg-10">
-				<input type="text" class="form-control" id="account" name="account" placeholder="请输入账户名" required
+				<input type="text" class="form-control" id="account" name="userName" placeholder="请输入账户名" required
 					   autofocus />
 			</div>
 			<div class="col-lg-10">
@@ -88,7 +88,7 @@
 		//console.log("cccsss")
 		var account=$("#account").val();
 		var password=$("#password").val();
-		window.location.href="/login/doLogin?account="+account+"&password="+password;
+		window.location.href="/login/doLogin?userName="+account+"&password="+password;
 	}
 
 </script>

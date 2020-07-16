@@ -6,11 +6,8 @@ public class User {
 
     private Integer id;
     private String userName;
-    private String account;
     private String password;
-    private String headImg;
     private Integer status;
-    private Integer projectId;
     private Date createTime;
 
 
@@ -30,13 +27,6 @@ public class User {
         this.id = id;
     }
 
-    public String getAccount() {
-        return account;
-    }
-
-    public void setAccount(String account) {
-        this.account = account;
-    }
 
     public String getPassword() {
         return password;
@@ -62,19 +52,4 @@ public class User {
         this.createTime = createTime;
     }
 
-    public Integer getProjectId() {
-        return projectId;
-    }
-
-    public void setProjectId(Integer projectId) {
-        this.projectId = projectId;
-    }
-
-    public String getHeadImg() {
-        return headImg;
-    }
-
-    public void setHeadImg(String headImg) {
-        this.headImg = headImg;
-    }
 }

@@ -45,7 +45,7 @@
             font-size: 36px;
         }
 
-        .banner li:nth-child(1) {
+       /* .banner li:nth-child(1) {
             background: #9fa8ef;
         }
 
@@ -55,7 +55,7 @@
 
         .banner li:nth-child(3) {
             background: #9fefc3;
-        }
+        }*/
 
         @keyframes marginLeft {
             0% {
@@ -145,15 +145,8 @@
         <div class="space"></div>
 
         <div class="nv" style="margin:0 auto;width:960px;">
-            <ul id="nv" id="nv_title">
-                <li class="current-cat"><a href="/forum/index">首页</a></li>
-                <li class="common"><a href="/forum/index">三校生高考</a></li>
-                <li class="common"><a href="/forum/index">专科自主招生考试</a></li>
-                <li class="common"><a href="/forum/index">中职校学业水平考试</a></li>
-                <li class="common"><a href="/forum/index">三月高考复习</a></li>
-                <li class="common"><a href="/forum/index">五月高考复习</a></li>
-                <li class="common"><a href="/forum/index">专升本</a></li>
-                <li class="common"><a href="/forum/index">成人高考</a></li>
+            <ul id="nv" >
+
             </ul>
         </div>
 
@@ -348,6 +341,7 @@ var _hmt = _hmt || [];
             getSatuationList();
             showKeywordList();
             showlabelList();
+            showToolTitle();
         })
 
         function showList(labelId,keywordId){
@@ -356,48 +350,52 @@ var _hmt = _hmt || [];
                 url:"/forum/getAllList",
                 data:{"labelId":labelId,"keywordId":keywordId},
                 success:function(data){
-                    if(data&&data.length>0){
-                        var str="";
-                        for(var i=0;i<data.length;i++){
-                            var labels="";
-                            if(data[i].labelList&&data[i].labelList.length>0){
-                                for(var l=0;l<data[i].labelList.length;l++){
-                                    labels+="<a href='#' onclick='toPageByLabel("+data[i].labelList[l].labelId+")'>"+data[i].labelList[l].labelName+"&nbsp;"+"</a>"
+                    if(data){
+                        if(data.length>0){
+                            var str="";
+                            for(var i=0;i<data.length;i++){
+                                var labels="";
+                                if(data[i].labelList&&data[i].labelList.length>0){
+                                    for(var l=0;l<data[i].labelList.length;l++){
+                                        labels+="<a href='#' onclick='toPageByLabel("+data[i].labelList[l].labelId+")'>"+data[i].labelList[l].labelName+"&nbsp;"+"</a>"
+                                    }
                                 }
+
+                                str+="<div class='lists'>" +
+                                    "            <div class='lists_l'>" +
+                                    "                <a href='#' onclick='toForumDetail("+data[i].id+")'>" +
+                                    "                    <img src="+data[i].mainPic+""+
+                                    "                          height='49px' width='49px'/>" +
+                                    "                </a>" +
+                                    "            </div>" +
+                                    "            <div class='lists_m'>" +
+                                    "                <div class='box'>" +
+                                    "                    <div class='title'>" +
+                                    "                        <a href='#' rel='bookmark'" +
+                                    "                           title='"+data[i].title+"'  onclick='toForumDetail("+data[i].id+")'>" +
+                                    "                                   <font color=#ff0000 style=font-weight:550>"+data[i].title+"</font></a>" +
+                                    "                    </div>" +
+                                    "                    <div class='read_total'><a href='#' onclick='toPageKeyword("+data[i].keywordId+")'>" +
+                                    "                        "+data[i].keyWord+"</a>"+
+                                    "                        标签: "+labels+
+                                    "<a href='#'>&nbsp浏览："+data[i].browseNum+"</a>"+
+                                    "                    </div>" +
+                                    "                </div>" +
+                                    "                <div class='lists_r'>" +
+                                    "                    <div class='info'>" +
+                                    "                    </div>" +
+                                    "                    <span id='comm'>" +
+                                    "<span id='views'>" +
+                                    "                </div>" +
+                                    "            </div>" +
+                                    "            <div style='clear:both'></div>" +
+                                    "        </div>"
                             }
 
-                            str+="<div class='lists'>" +
-                                "            <div class='lists_l'>" +
-                                "                <a href='#' onclick='toForumDetail("+data[i].id+")'>" +
-                                "                    <img src="+data[i].mainPic+""+
-                                "                          height='49px' width='49px'/>" +
-                                "                </a>" +
-                                "            </div>" +
-                                "            <div class='lists_m'>" +
-                                "                <div class='box'>" +
-                                "                    <div class='title'>" +
-                                "                        <a href='#' rel='bookmark'" +
-                                "                           title='"+data[i].title+"'  onclick='toForumDetail("+data[i].id+")'>" +
-                                "                                   <font color=#ff0000 style=font-weight:550>"+data[i].title+"</font></a>" +
-                                "                    </div>" +
-                                "                    <div class='read_total'><a href='#' onclick='toPageKeyword("+data[i].keywordId+")'>" +
-                                "                        "+data[i].keyWord+"</a>"+
-                                "                        标签: "+labels+
-                                "<a href='#'>&nbsp浏览："+data[i].browseNum+"</a>"+
-                                "                    </div>" +
-                                "                </div>" +
-                                "                <div class='lists_r'>" +
-                                "                    <div class='info'>" +
-                                "                    </div>" +
-                                "                    <span id='comm'>" +
-                                "<span id='views'>" +
-                                "                </div>" +
-                                "            </div>" +
-                                "            <div style='clear:both'></div>" +
-                                "        </div>"
+                            $("#allForumList").html(str);
+                        }else{
+                            $("#allForumList").html("");
                         }
-
-                        $("#allForumList").html(str);
 
                     }
                 },
@@ -478,6 +476,24 @@ var _hmt = _hmt || [];
                     }
                 }
             });
+        }
+
+        function showToolTitle(){
+            $.ajax({
+                type:"post",
+                url:"/forum/getToolTitle",
+                success:function(data){
+                    if(data){
+                        var str="<li class='current-cat'><a href='/forum/index'>首页</a></li>";
+                       // console.log(data)
+                        for(var i=0;i<data.length;i++){
+                            str+="<li class='common'><a href='/forum/index'>"+data[i].labelName+"</a></li>"
+                        }
+                        $("#nv").html(str);
+                    }
+                }
+            })
+
         }
 
     </script>

@@ -25,6 +25,7 @@
 package tk.mybatis.springboot.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import tk.mybatis.springboot.model.Bug;
 import tk.mybatis.springboot.model.User;
 import tk.mybatis.springboot.util.MyMapper;
@@ -35,4 +36,5 @@ import tk.mybatis.springboot.util.MyMapper;
  */
 @Mapper
 public interface UserMapper extends MyMapper<User> {
+    User getUserByAccount(@Param("userName") String userName);
 }
