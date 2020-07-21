@@ -9,9 +9,9 @@
 	<div style="float:left" style="width:20%">
 		<div >
 
-			<a  class='btn btn-primary' data-toggle='modal' data-target='#viewDetailModel' data-backdrop='static' title='新建帖子'
+			<a  class='btn btn-primary' data-toggle='modal' data-target='#viewAddModel' data-backdrop='static' title='新建帖子'
 
-              href=""  >新建帖子</a>
+              href="/forum/toAddPage"  >新建帖子</a>
 		</div>
 
 	</div>
@@ -23,7 +23,7 @@
 	</div>
 </div>
 <div>
-	<div class="modal fade hiddencleandata" id="viewDetailModel">
+	<div class="modal fade " id="viewAddModel">
 		<div class="modal-dialog">
 			<div class="modal-content" >
 
@@ -33,7 +33,16 @@
 			</div>
 		</div>
 	</div>
+	<div class="modal fade hiddencleandata" id="viewDetailModel12121212">
+		<div class="modal-dialog">
+			<div class="modal-content" >
 
+				<div class="modal-body">
+				</div>
+
+			</div>
+		</div>
+	</div>
 </div>
 	<table class="table">
 		<tr>
@@ -53,11 +62,6 @@
 
 
 <script type="text/javascript">
-
-	$('body').on('hidden.bs.modal', '.modal', function () {
-		$(this).removeData("bs.modal");
-		$(".modal-body").children().remove();
-	});
 
 	$(function(){
 		showList();
@@ -93,8 +97,8 @@
 						}
 
 						str+="<td><a  class='btn btn-primary' data-toggle='modal' " +
-								"data-target='#viewDetailModel' data-backdrop='static' title='查看详情' " +
-								"href='/bug/getDetail?id="+data[i].id+"' >编辑</a></td>";
+								"data-target='#viewDetailModel12121212' data-backdrop='static' title='查看详情' " +
+								"href='#' >编辑</a></td>";
 						str+="</tr>";
 					}
 					$("#listBody").html(str);
@@ -105,6 +109,7 @@
 			}
 		})
 	}
+
 
 
 	function showOwn(){
