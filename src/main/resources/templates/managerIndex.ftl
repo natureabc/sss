@@ -9,7 +9,9 @@
 	<div style="float:left" style="width:20%">
 		<div >
 
-			<button class="btn btn-primary" onclick="addBug()">新建帖子</button>
+			<a  class='btn btn-primary' data-toggle='modal' data-target='#viewDetailModel' data-backdrop='static' title='新建帖子'
+
+              href=""  >新建帖子</a>
 		</div>
 
 	</div>
@@ -102,12 +104,6 @@
 				console.log(data);
 			}
 		})
-	}
-
-
-	function addBug(){
-		var projId=$("#proj").val();
-		window.location.href="/bug/toAddPage?projectId="+projId;
 	}
 
 

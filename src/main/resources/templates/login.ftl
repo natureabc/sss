@@ -44,7 +44,7 @@
 		<div class="mysign">
 			<div class="col-lg-11 text-center text-info">
 				<h2>
-					请登录八阿哥系统</h2>
+					后台管理</h2>
 			</div>
 			<div class="col-lg-10">
 				<input type="text" class="form-control" id="account" name="userName" placeholder="请输入账户名" required

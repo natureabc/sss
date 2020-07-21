@@ -70,24 +70,37 @@
             <pattern>${log.pattern}</pattern>
         </encoder>
     </appender>
-	
+
+
+    <!--<appender name="DB" class="ch.qos.logback.classic.db.DBAppender">
+        <connectionSource class="ch.qos.logback.core.db.DriverManagerConnectionSource">
+            <driverClass>com.mysql.cj.jdbc.Driver</driverClass>
+            <url>jdbc:mysql://localhost:3306/sss</url>
+            <user>root</user>
+            <password>root</password>
+        </connectionSource>
+    </appender>
+
+    <root level="debug">
+        <appender-ref ref="DB"/>
+    </root>-->
 	<!-- 系统模块日志级别控制  -->
 	<logger name="com.db6hub.xcfriend" level="info" />
 	<!-- Spring日志级别控制  -->
 	<logger name="org.springframework" level="warn" />
 
-	<root level="info">
+	<root level="debug">
 		<appender-ref ref="console" />
 	</root>
 	
 	<!--系统操作日志-->
-    <root level="info">
+    <root level="debug">
         <appender-ref ref="file_info" />
         <appender-ref ref="file_error" />
     </root>
 	
 	<!--系统用户操作日志-->
-    <logger name="sys-user" level="info">
+    <logger name="sys-user" level="debug">
         <appender-ref ref="sys-user"/>
     </logger>
 </configuration> 
