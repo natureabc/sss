@@ -7,8 +7,8 @@
 	<h4 class="modal-title" id="myModalLabel1">新增帖子</h4>
 </div>
 <div >
-	<form action="/bug/addBug" method="post">
 		<#--<input type="hidden" name="projectId" value='<#if projectId?exists>${projectId}</#if>'/>-->
+	<form id="subForm">
 	<table class="table" style="width:60%">
 		<tr>
 			<td>列表图片</td>
@@ -46,7 +46,7 @@
 			<td><input type="text" class="form-control" name="browseNum"/></td>
 		</tr>
 		<tr>
-			<td><input type="submit" class='btn btn-primary'  value="提交"/></td>
+			<td><a href="#" class='btn btn-primary'  onclick="doSubmit()">提交</a> </td>
 		</tr>
 	</table>
 	</form>
@@ -62,15 +62,34 @@
 				if(data){
 					var str="";
 					for(var i=0;i<data.length;i++){
-						str+="<input type='checkbox'  name='labelList'/>"+data[i].labelName+"<br>";
+						str+="<input type='checkbox'  name='labelArray' value='"+data[i].id+"'/>"+data[i].labelName+"<br>";
 					}
 					$("#addLabel").html(str);
 				}
 			}
+		})
+	})
 
+	function doSubmit(){
+		$.ajax({
+			type:"post",
+			url:"/forum/addForum",
+			data:$("#subForm").serialize(),
+			success:function(data){
+				if(data&&data>0){
+					$("#viewAddModel").modal('hide');
+					showList();
+				}else{
+					alert('添加失败，请联系管理员')
+				}
+			},
+			error:function(data){
+				console.log("error===",data);
+				alert('网络错误，请联系管理员');
+			}
 		})
 
-	})
+	}
 
 
 </script>

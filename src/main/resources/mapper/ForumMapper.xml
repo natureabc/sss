@@ -25,6 +25,29 @@
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="tk.mybatis.springboot.mapper.ForumMapper">
+    <insert id="addForum" useGeneratedKeys="true" keyProperty="id">
+        insert into forum(
+            title,
+            main_pic,
+            is_hot,
+            key_word,
+            keyword_id,
+            browse_num,
+            content,
+            create_time,
+            update_time
+        )values(
+            #{title},
+            #{mainPic},
+            #{isHot},
+            #{keyWord},
+            #{keywordId},
+            #{browseNum},
+            #{content},
+            now(),
+            now()
+        )
+    </insert>
 
 
     <select id="getAllList" resultType="tk.mybatis.springboot.model.vo.ForumVo">

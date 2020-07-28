@@ -2,6 +2,7 @@ package tk.mybatis.springboot.service;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
 import tk.mybatis.springboot.mapper.ForumLabelMapper;
 import tk.mybatis.springboot.mapper.ForumMapper;
@@ -27,6 +28,9 @@ public class ForumService {
 
     @Resource
     private ForumLabelMapper forumLabelMapper;
+
+    @Resource
+    private LabelMapper labelMapper;
 
 
     public List<ForumVo> getAllList(Integer labelId,Integer keywordId) {
@@ -89,5 +93,24 @@ public class ForumService {
     public List<Label> getToolTitle() {
         List<Label> list=forumMapper.getLabelListTitle();
         return list;
+    }
+
+    @Transactional
+    public int addForum(ForumVo forum) {
+        int count=forumMapper.addForum(forum);
+        if(forum.getLabelArray()!=null&&forum.getLabelArray().length>0){
+            for(int i=0;i<forum.getLabelArray().length;i++){
+                ForumLabel fl=new ForumLabel();
+                fl.setForumId(forum.getId());
+                fl.setLabelId(Integer.parseInt(forum.getLabelArray()[i]));
+                Label label=labelMapper.selectByPrimaryKey(Integer.parseInt(forum.getLabelArray()[i]));
+                if(label!=null){
+                    fl.setLabelName(label.getLabelName());
+                }
+                forumLabelMapper.insert(fl);
+            }
+        }
+        return count;
+
     }
 }

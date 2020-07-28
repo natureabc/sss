@@ -8,6 +8,7 @@ import java.util.List;
 public class ForumVo extends Forum {
 
     private List<ForumLabel> labelList;
+    private String [] labelArray;
     private String preTitle;
     private String nextTitle;
     private Integer preId;
@@ -52,5 +53,13 @@ public class ForumVo extends Forum {
 
     public void setPreTitle(String preTitle) {
         this.preTitle = preTitle;
+    }
+
+    public String[] getLabelArray() {
+        return labelArray;
+    }
+
+    public void setLabelArray(String[] labelArray) {
+        this.labelArray = labelArray;
     }
 }

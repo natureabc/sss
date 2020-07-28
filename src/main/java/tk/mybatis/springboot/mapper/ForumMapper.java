@@ -29,4 +29,6 @@ public interface ForumMapper extends MyMapper<Forum> {
     List<Label> getLabelList();
 
     List<Label> getLabelListTitle();
+
+    int addForum(ForumVo forum);
 }
