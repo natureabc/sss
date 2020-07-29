@@ -1,9 +1,12 @@
 package tk.mybatis.springboot.service;
 
+import com.alibaba.druid.util.StringUtils;
 import org.apache.commons.collections.CollectionUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
+import tk.mybatis.mapper.util.StringUtil;
 import tk.mybatis.springboot.mapper.ForumLabelMapper;
 import tk.mybatis.springboot.mapper.ForumMapper;
 import tk.mybatis.springboot.mapper.LabelMapper;
@@ -13,8 +16,10 @@ import tk.mybatis.springboot.model.Keyword;
 import tk.mybatis.springboot.model.Satuation;
 import tk.mybatis.springboot.model.vo.ForumVo;
 import tk.mybatis.springboot.model.vo.Label;
+import tk.mybatis.springboot.util.FileConverBase64;
 
 import javax.annotation.Resource;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -32,6 +37,9 @@ public class ForumService {
     @Resource
     private LabelMapper labelMapper;
 
+    @Value("${sys.img.path}")
+    private String imgPath;
+
 
     public List<ForumVo> getAllList(Integer labelId,Integer keywordId) {
         Map<String,Object> params=new HashMap<>();
@@ -45,6 +53,10 @@ public class ForumService {
                criteria.andEqualTo("forumId",vo.getId());
                List<ForumLabel> fllist=forumLabelMapper.selectByExample(example);
                vo.setLabelList(fllist);
+               if(StringUtil.isNotEmpty(vo.getMainPic())){
+                   String path=FileConverBase64.getbase64Url(imgPath+vo.getMainPic());
+                   vo.setMainPic(path);
+               }
            }
        }
        return  list;
@@ -97,6 +109,15 @@ public class ForumService {
 
     @Transactional
     public int addForum(ForumVo forum) {
+        try {
+            if (forum.getImgFile() != null) {
+                String fileName = System.currentTimeMillis()+forum.getImgFile().getOriginalFilename();
+                forum.getImgFile().transferTo(new File(imgPath + fileName));
+                forum.setMainPic(fileName);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         int count=forumMapper.addForum(forum);
         if(forum.getLabelArray()!=null&&forum.getLabelArray().length>0){
             for(int i=0;i<forum.getLabelArray().length;i++){
@@ -111,6 +132,12 @@ public class ForumService {
             }
         }
         return count;
+
+    }
+
+    public int delForum(Integer id) {
+
+        return forumMapper.delForum(id);
 
     }
 }

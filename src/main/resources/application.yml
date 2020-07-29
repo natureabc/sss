@@ -64,5 +64,7 @@ spring:
                 wall:
                     config:
                         multi-statement-allow: true
-
+sys:
+   img:
+     path: D:/img/
 #    params: count=countSql

@@ -8,47 +8,47 @@
 </div>
 <div >
 		<#--<input type="hidden" name="projectId" value='<#if projectId?exists>${projectId}</#if>'/>-->
-	<form id="subForm">
-	<table class="table" style="width:60%">
-		<tr>
-			<td>列表图片</td>
-			<td><input type="file" class="form-control" name="mainPic"/></td>
-		</tr>
-		<tr>
-			<td>标题</td>
-			<td><input type="text" class="form-control" name="title"/></td>
-		</tr>
-		<tr>
-			<td>内容</td>
-			<td>
-				<textarea  class="form-control" name="content"></textarea>
-			</td>
-		</tr>
-		<tr>
-			<td>关键字</td>
-			<td><input type="text" class="form-control" name="keyWord"/></td>
-		</tr>
-		<tr>
-			<td>标签</td>
-			<td id="addLabel"></td>
-		</tr>
-		<tr>
-			<td>是否标红</td>
-			<td>
-				<select name="isHot" class="form-control">
-					<option value="1">标红</option>
-					<option value="0">未标</option>
-				</select>
-			</td>
-		</tr>
-		<tr>
-			<td>浏览量</td>
-			<td><input type="text" class="form-control" name="browseNum"/></td>
-		</tr>
-		<tr>
-			<td><a href="#" class='btn btn-primary'  onclick="doSubmit()">提交</a> </td>
-		</tr>
-	</table>
+	<form id="subForm" >
+		<table class="table" style="width:60%">
+			<tr>
+				<td>列表图片</td>
+				<td><input type="file" class="form-control" name="imgFile"/></td>
+			</tr>
+			<tr>
+				<td>标题</td>
+				<td><input type="text" class="form-control" name="title"/></td>
+			</tr>
+			<tr>
+				<td>内容</td>
+				<td>
+					<textarea  class="form-control" name="content"></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td>关键字</td>
+				<td><input type="text" class="form-control" name="keyWord"/></td>
+			</tr>
+			<tr>
+				<td>标签</td>
+				<td id="addLabel"></td>
+			</tr>
+			<tr>
+				<td>是否标红</td>
+				<td>
+					<select name="isHot" class="form-control">
+						<option value="1">标红</option>
+						<option value="0">未标</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>浏览量</td>
+				<td><input type="text" class="form-control" name="browseNum"/></td>
+			</tr>
+			<tr>
+				<td><a href="#" class='btn btn-primary'  onclick="doSubmit()">提交</a> </td>
+			</tr>
+		</table>
 	</form>
 </div>
 </body>
@@ -71,10 +71,16 @@
 	})
 
 	function doSubmit(){
+		var formData=new FormData($("#subForm")[0]);
+		console.log("-=====",formData);
 		$.ajax({
 			type:"post",
 			url:"/forum/addForum",
-			data:$("#subForm").serialize(),
+			data:formData,
+			async: false,
+			cache: false,
+			contentType: false,
+			processData: false,
 			success:function(data){
 				if(data&&data>0){
 					$("#viewAddModel").modal('hide');

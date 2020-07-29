@@ -34,7 +34,7 @@ import tk.mybatis.springboot.interceptor.Interceptor;
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
     //实现拦截器 要拦截的路径以及不拦截的路径
-    private String [] ignorUrl={"/login/toLogin","/login/doLogin","/forum/index","/forum/**","/static/**"};
+    private String [] ignorUrl={"/login/toLogin","/login/doLogin","/forum/index","/forum/**","/static/**","D:/img/"};
     private static final String[] CLASSPATH_RESOURCE_LOCATIONS = {
             "classpath:/META-INF/resources/", "classpath:/resources/",
             "classpath:/static/", "classpath:/public/" };

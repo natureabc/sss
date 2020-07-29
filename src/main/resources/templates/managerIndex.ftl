@@ -12,6 +12,7 @@
 			<a  class='btn btn-primary' data-toggle='modal' data-target='#viewAddModel' data-backdrop='static' title='新建帖子'
 
               href="/forum/toAddPage"  >新建帖子</a>
+			<img src="D:/img/1596010635643tb (19).jpg"/>
 		</div>
 
 	</div>
@@ -98,7 +99,7 @@
 
 						str+="<td><a  class='btn btn-primary' data-toggle='modal' " +
 								"data-target='#viewDetailModel12121212' data-backdrop='static' title='查看详情' " +
-								"href='#' >编辑</a></td>";
+								"href='#' >编辑</a> <a class='btn btn-warning' onclick='delForum("+data[i].id+")'>删除</a></td>";
 						str+="</tr>";
 					}
 					$("#listBody").html(str);
@@ -115,6 +116,27 @@
 	function showOwn(){
 
 		showList(projectId,);
+	}
+
+	function delForum(id){
+
+		if(confirm("确定要删除吗?")){
+			$.ajax({
+				type:"post",
+				data:{"id":id},
+				url:"/forum/delForum",
+				success:function(data){
+					if(data&&data>0){
+						alert('删除成功');
+						showList();
+					}
+				},
+				error:function(data){
+					console.log(data);
+					alert('网络错误，请联系管理员');
+				}
+			});
+		}
 	}
 
 </script>

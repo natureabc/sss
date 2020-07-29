@@ -91,4 +91,10 @@ public class ForumController {
         return count;
     }
 
+    @RequestMapping("delForum")
+    public Object delForum(Integer id){
+        int count=forumService.delForum(id);
+        return count;
+    }
+
 }

@@ -14,6 +14,8 @@ public class Forum extends BaseEntity{
     private Integer browseNum;
     private String content;
     private Date createTime;
+    private Integer isDel;
+
     @Transient
     private String createTimeStr;
     private Date updateTime;
@@ -102,5 +104,13 @@ public class Forum extends BaseEntity{
 
     public void setKeywordId(Integer keywordId) {
         this.keywordId = keywordId;
+    }
+
+    public Integer getIsDel() {
+        return isDel;
+    }
+
+    public void setIsDel(Integer isDel) {
+        this.isDel = isDel;
     }
 }

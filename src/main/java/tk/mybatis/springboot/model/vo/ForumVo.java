@@ -1,5 +1,6 @@
 package tk.mybatis.springboot.model.vo;
 
+import org.springframework.web.multipart.MultipartFile;
 import tk.mybatis.springboot.model.Forum;
 import tk.mybatis.springboot.model.ForumLabel;
 
@@ -13,6 +14,7 @@ public class ForumVo extends Forum {
     private String nextTitle;
     private Integer preId;
     private Integer nextId;
+    private MultipartFile imgFile;
 
     public List<ForumLabel> getLabelList() {
         return labelList;
@@ -61,5 +63,13 @@ public class ForumVo extends Forum {
 
     public void setLabelArray(String[] labelArray) {
         this.labelArray = labelArray;
+    }
+
+    public MultipartFile getImgFile() {
+        return imgFile;
+    }
+
+    public void setImgFile(MultipartFile imgFile) {
+        this.imgFile = imgFile;
     }
 }
