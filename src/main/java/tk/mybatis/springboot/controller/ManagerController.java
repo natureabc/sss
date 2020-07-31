@@ -43,6 +43,21 @@ public class ManagerController {
         return count;
     }
 
+    @RequestMapping("toEditPage")
+    public ModelAndView toEditPage(String forumId){
+        ModelAndView mv=new ModelAndView();
+        mv.addObject("forumId",forumId);
+        mv.setViewName("forumEditPage");
+        return mv;
+
+    }
+
+    @RequestMapping("editForum")
+    public Object editForum(ForumVo forum){
+        int count=forumService.editForum(forum);
+        return count;
+    }
+
     @RequestMapping("delForum")
     public Object delForum(Integer id){
         int count=forumService.delForum(id);

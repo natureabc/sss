@@ -33,4 +33,6 @@ public interface ForumMapper extends MyMapper<Forum> {
     int addForum(ForumVo forum);
 
     int delForum(Integer id);
+
+    int editForm(ForumVo forum);
 }

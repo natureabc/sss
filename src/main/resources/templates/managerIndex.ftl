@@ -33,7 +33,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="modal fade hiddencleandata" id="viewDetailModel12121212">
+	<div class="modal fade hiddencleandata" id="viewEditModel">
 		<div class="modal-dialog">
 			<div class="modal-content" >
 
@@ -97,8 +97,8 @@
 						}
 
 						str+="<td><a  class='btn btn-primary' data-toggle='modal' " +
-								"data-target='#viewDetailModel12121212' data-backdrop='static' title='查看详情' " +
-								"href='#' >编辑</a> <a class='btn btn-warning' onclick='delForum("+data[i].id+")'>删除</a></td>";
+								"data-target='#viewEditModel' data-backdrop='static' title='详情' " +
+								"href='/manager/toEditPage?forumId="+data[i].id+"' >编辑</a> <a class='btn btn-warning' onclick='delForum("+data[i].id+")'>删除</a></td>";
 						str+="</tr>";
 					}
 					$("#listBody").html(str);

@@ -1,6 +1,7 @@
 package tk.mybatis.springboot.service;
 
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -70,6 +71,9 @@ public class ForumService {
     public ForumVo getForumDetailById(Integer forumId) {
 
         ForumVo f=forumMapper.getById(forumId);
+        if(StringUtils.isNotEmpty(f.getMainPic())){
+            f.setMainPic(imgPath+f.getMainPic());
+        }
         Example example = new Example(ForumLabel.class);
         Example.Criteria criteria = example.createCriteria();
         criteria.andEqualTo("forumId",f.getId());
@@ -115,7 +119,7 @@ public class ForumService {
     @Transactional
     public int addForum(ForumVo forum) {
         try {
-            if (forum.getImgFile() != null) {
+            if (!forum.getImgFile().isEmpty()) {
                 String fileName = System.currentTimeMillis()+".jpg";
                 forum.getImgFile().transferTo(new File(uploadPath + fileName));
                 forum.setMainPic(fileName);
@@ -150,5 +154,43 @@ public class ForumService {
 
         return forumMapper.delForum(id);
 
+    }
+
+    public int editForum(ForumVo forum) {
+        if(forum.getId()==null){
+            return -1;
+        }
+        try {
+            if (!forum.getImgFile().isEmpty()) {
+                String fileName = System.currentTimeMillis()+".jpg";
+                forum.getImgFile().transferTo(new File(uploadPath + fileName));
+                forum.setMainPic(fileName);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        if(forum.getKeywordId()!=null){
+            Integer keywordId=forum.getKeywordId();
+            Keyword keyword=keywordMapper.selectByPrimaryKey(keywordId);
+            if(keyword!=null){
+                forum.setKeyWord(keyword.getKeyword());
+            }
+        }
+        int count=forumMapper.editForm(forum);
+        if(forum.getLabelArray()!=null&&forum.getLabelArray().length>0){
+            //全删全增
+            forumLabelMapper.deleteByForumId(forum.getId());
+            for(int i=0;i<forum.getLabelArray().length;i++){
+                ForumLabel fl=new ForumLabel();
+                fl.setForumId(forum.getId());
+                fl.setLabelId(Integer.parseInt(forum.getLabelArray()[i]));
+                Label label=labelMapper.selectByPrimaryKey(Integer.parseInt(forum.getLabelArray()[i]));
+                if(label!=null){
+                    fl.setLabelName(label.getLabelName());
+                }
+                forumLabelMapper.insert(fl);
+            }
+        }
+        return count;
     }
 }

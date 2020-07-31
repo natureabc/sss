@@ -51,6 +51,22 @@
     <update id="delForum">
         update forum set is_del=1 where id=#{id}
     </update>
+    <update id="editForm">
+        update forum
+        <set>
+            title=#{title},
+            <if test="mainPic!=null and mainPic!=''">
+                main_pic=#{mainPic},
+            </if>
+            is_hot=#{isHot},
+            key_word=#{keyWord},
+            keyword_id=#{keywordId},
+            browse_num=#{browseNum},
+            content=#{content},
+            update_time=now(),
+        </set>
+        where id=#{id}
+    </update>
 
 
     <select id="getAllList" resultType="tk.mybatis.springboot.model.vo.ForumVo">

@@ -1,9 +1,11 @@
 package tk.mybatis.springboot.model;
 
+import javax.persistence.Id;
 import java.util.Date;
 
 public class Keyword {
 
+    @Id
     private Integer id;
     private String keyword;
     private Date createTime;
