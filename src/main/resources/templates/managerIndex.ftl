@@ -11,8 +11,7 @@
 
 			<a  class='btn btn-primary' data-toggle='modal' data-target='#viewAddModel' data-backdrop='static' title='新建帖子'
 
-              href="/forum/toAddPage"  >新建帖子</a>
-			<img src="D:/img/1596010635643tb (19).jpg"/>
+              href="/manager/toAddPage"  >新建帖子</a>
 		</div>
 
 	</div>
@@ -112,19 +111,13 @@
 	}
 
 
-
-	function showOwn(){
-
-		showList(projectId,);
-	}
-
 	function delForum(id){
 
 		if(confirm("确定要删除吗?")){
 			$.ajax({
 				type:"post",
 				data:{"id":id},
-				url:"/forum/delForum",
+				url:"/manager/delForum",
 				success:function(data){
 					if(data&&data>0){
 						alert('删除成功');

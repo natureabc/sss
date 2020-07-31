@@ -25,6 +25,7 @@
 package tk.mybatis.springboot.conf;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.*;
 import tk.mybatis.springboot.interceptor.Interceptor;
@@ -33,8 +34,15 @@ import tk.mybatis.springboot.interceptor.Interceptor;
 @Configuration
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
+    @Value("${sys.img.readPath}")
+    private String imgPath;
+
+    @Value("${sys.img.uploadPath}")
+    private String uploadPath;
+
+
     //实现拦截器 要拦截的路径以及不拦截的路径
-    private String [] ignorUrl={"/login/toLogin","/login/doLogin","/forum/index","/forum/**","/static/**","D:/img/"};
+    private String [] ignorUrl={"/login/toLogin","/login/doLogin","/forum/index","/forum/**","/static/**"};
     private static final String[] CLASSPATH_RESOURCE_LOCATIONS = {
             "classpath:/META-INF/resources/", "classpath:/resources/",
             "classpath:/static/", "classpath:/public/" };
@@ -55,7 +63,8 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
             registry.addResourceHandler("/**").addResourceLocations(
                     CLASSPATH_RESOURCE_LOCATIONS);
         }
-
+        registry.addResourceHandler(imgPath+"**").addResourceLocations("file:/"+uploadPath);
+        super.addResourceHandlers(registry);
     }
 
 

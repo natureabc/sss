@@ -26,7 +26,12 @@
 			</tr>
 			<tr>
 				<td>关键字</td>
-				<td><input type="text" class="form-control" name="keyWord"/></td>
+				<td>
+					<select id="addKeyword" name="keywordId" class="form-control">
+
+					</select>
+
+				</td>
 			</tr>
 			<tr>
 				<td>标签</td>
@@ -67,15 +72,35 @@
 					$("#addLabel").html(str);
 				}
 			}
-		})
+		});
+
+		showKeywordList();
 	})
+
+
+	function showKeywordList(){
+
+		$.ajax({
+			type:"post",
+			url:"/forum/getKeyWordList",
+			success:function(data){
+				if(data&&data.length>0){
+					var str="";
+					for(var i=0;i<data.length;i++){
+						str+=" <option value='"+data[i].id+"'>"+data[i].keyword+"</option>";
+					}
+					$("#addKeyword").html(str);
+				}
+			}
+		});
+	}
 
 	function doSubmit(){
 		var formData=new FormData($("#subForm")[0]);
 		console.log("-=====",formData);
 		$.ajax({
 			type:"post",
-			url:"/forum/addForum",
+			url:"/manager/addForum",
 			data:formData,
 			async: false,
 			cache: false,

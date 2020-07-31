@@ -39,7 +39,7 @@
 	</style>
 </head>
 <body>
-<#--<form id="from" action="/login/doLogin" method="post">-->
+<form id="from" action="/login/doLogin" method="post">
 	<div class="mycenter">
 		<div class="mysign">
 			<div class="col-lg-11 text-center text-info">
@@ -71,11 +71,11 @@
 			<div class="col-lg-10">
 			</div>
 			<div class="col-lg-10">
-				<input type="submit" id="btn" class="btn btn-success col-lg-12" value="登录" onclick="doLogin()">
+				<input type="submit" id="btn" class="btn btn-success col-lg-12" value="登录" >
 			</div>
 		</div>
 	</div>
-<#--</form>-->
+</form>
 </body>
 
 <script type="text/javascript">
@@ -84,12 +84,12 @@
 	if(error){
 		$("#errorMsg").html(error);
 	}-->
-	function doLogin(){
+	/*function doLogin(){
 		//console.log("cccsss")
 		var account=$("#account").val();
 		var password=$("#password").val();
 		window.location.href="/login/doLogin?userName="+account+"&password="+password;
-	}
+	}*/
 
 </script>
 </html>

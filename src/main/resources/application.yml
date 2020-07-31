@@ -64,7 +64,15 @@ spring:
                 wall:
                     config:
                         multi-statement-allow: true
+    servlet:
+        multipart:
+            max-file-size: 30MB
+            max-request-size: 50MB
+
+
+
 sys:
    img:
-     path: D:/img/
+     uploadPath: D:/img/
+     readPath: /img/
 #    params: count=countSql

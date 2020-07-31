@@ -16,6 +16,8 @@ public class LoginController {
 
     @Resource
     private UserService userService;
+    @Resource
+    private ManagerController managerController;
 
     @RequestMapping("toLogin")
     public ModelAndView toLogin(){
@@ -28,7 +30,8 @@ public class LoginController {
         User user=userService.getUserByAccount(userName,password);
         if(user!=null){
             request.getSession().setAttribute("user",user);
-            return new ModelAndView("managerIndex");
+            //return new ModelAndView("managerIndex");
+            return managerController.toIndex();
         }else{
             request.getSession().setAttribute("error","用户名或密码错误");
             return new ModelAndView("login");

@@ -80,21 +80,4 @@ public class ForumController {
 
     }
 
-    @RequestMapping("toAddPage")
-    public ModelAndView toAddPage(){
-        return new ModelAndView("forumAddPage");
-    }
-
-    @RequestMapping("addForum")
-    public Object addForum(ForumVo forum){
-        int count=forumService.addForum(forum);
-        return count;
-    }
-
-    @RequestMapping("delForum")
-    public Object delForum(Integer id){
-        int count=forumService.delForum(id);
-        return count;
-    }
-
 }
