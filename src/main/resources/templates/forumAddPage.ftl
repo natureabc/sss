@@ -1,10 +1,13 @@
 <html>
 <head>
+	<script type="text/javascript" charset="utf-8" src="/js/ueditor.config.js"></script>
+	<script type="text/javascript" charset="utf-8" src="/js/ueditor.all.min.js"> </script>
 </head>
 <body>
 <div class="modal-header">
 	<button type="button" class="close" data-dismiss="modal" >&times;</button>
 	<h4 class="modal-title" id="myModalLabel1">新增帖子</h4>
+
 </div>
 <div >
 		<#--<input type="hidden" name="projectId" value='<#if projectId?exists>${projectId}</#if>'/>-->
@@ -21,7 +24,8 @@
 			<tr>
 				<td>内容</td>
 				<td>
-					<textarea  class="form-control" name="content"></textarea>
+					<script id="editor" type="text/plain" style="width:1024px;height:500px;"></script>
+					<textarea name="content" id="formContent" style="display: none;"></textarea>
 				</td>
 			</tr>
 			<tr>
@@ -59,6 +63,7 @@
 </body>
 
 <script type="text/javascript">
+	var ue = UE.getEditor('editor');
 	$(function(){
 		$.ajax({
 			type:"post",
@@ -96,6 +101,10 @@
 	}
 
 	function doSubmit(){
+		var contentHtml=UE.getEditor('editor').getAllHtml();
+		$("#formContent").val(contentHtml)
+
+		//alert($("#formContent").val());
 		var formData=new FormData($("#subForm")[0]);
 		console.log("-=====",formData);
 		$.ajax({

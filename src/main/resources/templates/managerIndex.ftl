@@ -23,8 +23,8 @@
 	</div>
 </div>
 <div>
-	<div class="modal fade " id="viewAddModel">
-		<div class="modal-dialog">
+	<div class="modal fade " id="viewAddModel" >
+		<div class="modal-dialog" style="width:1300px">
 			<div class="modal-content" >
 
 				<div class="modal-body">
@@ -34,7 +34,7 @@
 		</div>
 	</div>
 	<div class="modal fade hiddencleandata" id="viewEditModel">
-		<div class="modal-dialog">
+		<div class="modal-dialog" style="width:1300px">
 			<div class="modal-content" >
 
 				<div class="modal-body">

@@ -4,14 +4,13 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>丁老师之家---</title>
-    <meta name="keywords" content="上海三校生论坛"/>
-    <meta name="description" content="三校生之家就是原上海三校生论坛，成立于2007年，主旨是帮助中专，职校，技校的同学更好的了解升学的途径的网站。"/>
+    <meta name="keywords" content="上海丁老师论坛"/>
     <meta name="generator" content="emlog"/>
     <link href="/css/sssmain.css" rel="stylesheet" type="text/css"/>
     <link href="/css/sssstyle.css" rel="stylesheet" type="text/css"/>
     <script src="/js/ssscommon_tpl.js" type="text/javascript"></script>
+
     <script src="http://www.shsxs.com/content/templates/mi2/js/jquery.min.js"></script>
-    <#--<script type="text/javascript" src="http://www.shsxs.com//content/plugins/em_ad/em_ad_common.js"></script>-->
     <style type="text/css">
         .banner {
             position: relative;
@@ -335,7 +334,10 @@ var _hmt = _hmt || [];
 <![endif]-->
 
 </body>
-    <script>
+    <script type="text/javascript">
+
+
+
         $(function (){
             showList();
             getSatuationList();
