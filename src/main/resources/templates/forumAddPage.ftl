@@ -1,14 +1,18 @@
 <html>
 <head>
+
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script type="text/javascript" charset="utf-8" src="/js/ueditor.config.js"></script>
 	<script type="text/javascript" charset="utf-8" src="/js/ueditor.all.min.js"> </script>
 </head>
 <body>
-<div class="modal-header">
+<#--<div class="modal-header">
 	<button type="button" class="close" data-dismiss="modal" >&times;</button>
 	<h4 class="modal-title" id="myModalLabel1">新增帖子</h4>
 
-</div>
+</div>-->
 <div >
 		<#--<input type="hidden" name="projectId" value='<#if projectId?exists>${projectId}</#if>'/>-->
 	<form id="subForm" >
@@ -64,6 +68,7 @@
 
 <script type="text/javascript">
 	var ue = UE.getEditor('editor');
+
 	$(function(){
 		$.ajax({
 			type:"post",
@@ -117,8 +122,8 @@
 			processData: false,
 			success:function(data){
 				if(data&&data>0){
-					$("#viewAddModel").modal('hide');
-					showList();
+					//$("#viewAddModel").modal('hide');
+					//showList();
 				}else{
 					alert('添加失败，请联系管理员')
 				}

@@ -90,7 +90,7 @@
 <body>
 <div class="cl" id="toptb">
     <div class="wp">
-        <div class="z">
+        <#--<div class="z">
             <a href="http://www.shsxs.com/"
                onClick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://www.shsxs.com/')">设为首页</a>
             <script language="javascript">
@@ -100,7 +100,7 @@
             </script>
             <a href="#" onClick="bookmarkit()">收藏本站</a>
 
-        </div>
+        </div>-->
 <#--
         <div class="y">
             <a title="登录" href="http://www.shsxs.com//content/plugins/em_ad/image/icCc1Ydln3IT.png"

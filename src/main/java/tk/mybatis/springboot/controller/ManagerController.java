@@ -2,6 +2,7 @@ package tk.mybatis.springboot.controller;
 
 
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import tk.mybatis.springboot.model.vo.ForumVo;
@@ -62,6 +63,13 @@ public class ManagerController {
     public Object delForum(Integer id){
         int count=forumService.delForum(id);
         return count;
+    }
+
+    @RequestMapping("toBannerPage")
+    public ModelAndView toBannerPage(){
+
+        return new ModelAndView("bannerPage");
+
     }
 
 }

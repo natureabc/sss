@@ -3,15 +3,20 @@
 	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="/js/ueditor.config.js"></script>
+
+
 </head>
 <body>
 <div>
 	<div style="float:left" style="width:20%">
 		<div >
 
-			<a  class='btn btn-primary' data-toggle='modal' data-target='#viewAddModel' data-backdrop='static' title='新建帖子'
+			<#--<a  class='btn btn-primary' data-toggle='modal' data-target='#viewAddModel' data-backdrop='static' title='新建帖子'
 
-              href="/manager/toAddPage"  >新建帖子</a>
+              href="/manager/toAddPage"  >新建帖子</a>-->
+			<a  class='btn btn-primary' href="/manager/toAddPage">新建帖子</a>
+			<a  class='btn btn-primary' href="/manager/toBannerPage"  >编辑轮播图</a>
 		</div>
 
 	</div>
@@ -22,7 +27,7 @@
 		<a href="/login/logout">退出登录</a>
 	</div>
 </div>
-<div>
+<#--<div>
 	<div class="modal fade " id="viewAddModel" >
 		<div class="modal-dialog" style="width:1300px">
 			<div class="modal-content" >
@@ -43,7 +48,7 @@
 			</div>
 		</div>
 	</div>
-</div>
+</div>-->
 	<table class="table">
 		<tr>
 			<th>图片</th>
@@ -60,10 +65,12 @@
 	</table>
 </body>
 
-
+<script type="text/javascript" charset="utf-8" src="/js/ueditor.all.min.js"> </script>
 <script type="text/javascript">
 
-	$(function(){
+//	var ue = UE.getEditor('editor');
+//	var ue = UE.getEditor('editor1');
+	$(function(){``
 		showList();
 	});
 
@@ -96,9 +103,7 @@
 							str+="<td>未标</td>";
 						}
 
-						str+="<td><a  class='btn btn-primary' data-toggle='modal' " +
-								"data-target='#viewEditModel' data-backdrop='static' title='详情' " +
-								"href='/manager/toEditPage?forumId="+data[i].id+"' >编辑</a> <a class='btn btn-warning' onclick='delForum("+data[i].id+")'>删除</a></td>";
+						str+="<td><a  class='btn btn-primary' href='/manager/toEditPage?forumId="+data[i].id+"' >编辑</a> <a class='btn btn-warning' onclick='delForum("+data[i].id+")'>删除</a></td>";
 						str+="</tr>";
 					}
 					$("#listBody").html(str);

@@ -87,6 +87,7 @@
                 <p class="tag" id="forumLabel"></p>
             </div><!--end loginfo-->
             <div class="post_content" id="forumContent">
+                <iframe id="iframe1" scrolling="no" frameborder="no" border="0" width="100%"  height="100%"></iframe>
 
             </div>
 
@@ -355,7 +356,7 @@
 <![endif]-->
 
 </body>
-
+<button onclick="getHeight()">获取高度</button>
 <script>
     var fid='${forumId}';
     $(function(){
@@ -387,7 +388,12 @@
                     }
                 }
                 $("#forumLabel").html(forumLabel);
-                $("#forumContent").html(data.content);
+
+                var oIframe = document.getElementById("iframe1");
+                oIframe.contentWindow.document.body.innerHTML= data.content;
+                var iframeHeight=oIframe.contentWindow.document.body.offsetHeight;
+                document.getElementById("forumContent").style.height= iframeHeight+"px";
+
                 if(data.preId&&data.nextId){
                     var str="<span title='上一篇'>上一篇:</span><a href='#' onclick='changeDetail("+data.preId+")'>"+data.preTitle+"</a><br>";
                     str+="<span title='下一篇'>下一篇:</span><a href='#' onclick='changeDetail("+data.nextId+")'>"+data.nextTitle+"</a>";
@@ -401,7 +407,7 @@
                     var nextStr="<span title='下一篇'>下一篇:</span><a href='#' onclick='changeDetail("+data.nextId+")'>"+data.nextTitle+"</a>";
                     $("#neighborLog").html(nextStr);
                 }
-               // console.log(data);
+
             }
 
         });
