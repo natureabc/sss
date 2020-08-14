@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+import tk.mybatis.springboot.model.Banner;
+import tk.mybatis.springboot.model.vo.BannerVo;
 import tk.mybatis.springboot.model.vo.ForumVo;
 import tk.mybatis.springboot.service.ForumService;
 
@@ -72,4 +74,30 @@ public class ManagerController {
 
     }
 
+    @RequestMapping("getBannerList")
+    public Object getBannerList(){
+
+        List<Banner> list=forumService.getBannerList();
+        return list;
+    }
+
+    @RequestMapping("changeBanner")
+    public Object changeBanner(BannerVo bannerVo){
+        int count=forumService.changeBanner(bannerVo);
+        return count;
+
+    }
+
+    @RequestMapping("toBannerAdd")
+    public ModelAndView toBannerAdd(){
+        return new ModelAndView("bannerAdd");
+    }
+
+    @RequestMapping("addBanner")
+    public Object addBanner(BannerVo bannerVo){
+
+        int count=forumService.addBanner(bannerVo);
+        return count;
+
+    }
 }

@@ -7,21 +7,18 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
 import tk.mybatis.mapper.util.StringUtil;
-import tk.mybatis.springboot.mapper.ForumLabelMapper;
-import tk.mybatis.springboot.mapper.ForumMapper;
-import tk.mybatis.springboot.mapper.KeywordMapper;
-import tk.mybatis.springboot.mapper.LabelMapper;
+import tk.mybatis.springboot.mapper.*;
+import tk.mybatis.springboot.model.Banner;
 import tk.mybatis.springboot.model.ForumLabel;
 import tk.mybatis.springboot.model.Keyword;
 import tk.mybatis.springboot.model.Satuation;
+import tk.mybatis.springboot.model.vo.BannerVo;
 import tk.mybatis.springboot.model.vo.ForumVo;
 import tk.mybatis.springboot.model.vo.Label;
 
 import javax.annotation.Resource;
 import java.io.File;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class ForumService {
@@ -37,6 +34,9 @@ public class ForumService {
 
     @Resource
     private KeywordMapper keywordMapper;
+
+    @Resource
+    private BannerMapper bannerMapper;
 
 
     @Value("${sys.img.readPath}")
@@ -192,5 +192,55 @@ public class ForumService {
             }
         }
         return count;
+    }
+
+    public List<Banner> getBannerList() {
+
+        List<Banner>  list=bannerMapper.selectAll();
+        if(CollectionUtils.isNotEmpty(list)){
+            for(Banner b:list){
+                if(StringUtils.isNotBlank(b.getBannerImg())){
+                    String path=imgPath+b.getBannerImg();
+                    b.setBannerImg(path);
+                }
+            }
+        }
+        return list;
+    }
+
+    public int addBanner(BannerVo bannerVo) {
+        try {
+            Banner b = new Banner();
+            if (!bannerVo.getImgFile().isEmpty()) {
+                String fileName = System.currentTimeMillis() + ".jpg";
+                bannerVo.getImgFile().transferTo(new File(uploadPath + fileName));
+                b.setBannerImg(fileName);
+            }
+            b.setCreateTime(new Date());
+            b.setSort(bannerVo.getSort());
+            return bannerMapper.insert(b);
+        }catch (Exception e){
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    public int changeBanner(BannerVo bannerVo) {
+        try {
+            Banner b = new Banner();
+            if (!bannerVo.getImgFile().isEmpty()) {
+                String fileName = System.currentTimeMillis() + ".jpg";
+                bannerVo.getImgFile().transferTo(new File(uploadPath + fileName));
+                b.setBannerImg(fileName);
+            }
+            b.setSort(bannerVo.getSort());
+            b.setId(bannerVo.getId());
+            return bannerMapper.editBanner(b);
+        }catch (Exception e){
+            e.printStackTrace();
+            return 0;
+        }
+
+
     }
 }

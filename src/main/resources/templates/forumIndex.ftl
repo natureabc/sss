@@ -119,7 +119,7 @@
         <a >
             <a href="#" >
                 <div class="banner">
-                    <ul class="banner-auto">
+                    <ul class="banner-auto" id="imgBanner">
                         <li><img src="/img/1.jpg" style="width:960px;height:200px"/></li>
                         <li><img src="/img/2.jpg" style="width:960px;height:200px"/></li>
                         <li><img src="/img/3.jpg" style="width:960px;height:200px"/></li>
@@ -344,6 +344,7 @@ var _hmt = _hmt || [];
             showKeywordList();
             showlabelList();
             showToolTitle();
+            getBanner();
         })
 
         function showList(labelId,keywordId){
@@ -406,6 +407,23 @@ var _hmt = _hmt || [];
             })
         }
 
+
+        function getBanner(){
+            $.ajax({
+                type:"post",
+                url:"/forum/getBannerList",
+                success:function(data){
+                    if(data){
+                        var str="";
+                        for(var i=0;i<data.length;i++){
+                            str+="<li><img src='"+data[i].bannerImg+"' style='width:960px;height:200px'/></li>";
+                        }
+                        $("#imgBanner").html(str);
+                    }
+                }
+            });
+
+        }
 
 
         function toPageByLabel(labelId){

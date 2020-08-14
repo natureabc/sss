@@ -181,6 +181,8 @@
 				if(data&&data>0){
 					//$("#viewEditModel").modal('hide');
 				///	showList();
+					alert('编辑成功');
+					window.location.href="/manager/index";
 				}else if(data==-1){
 					alert('编辑失败，id为空')
 				}else{

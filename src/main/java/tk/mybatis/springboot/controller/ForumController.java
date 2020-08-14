@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+import tk.mybatis.springboot.model.Banner;
 import tk.mybatis.springboot.model.Forum;
 import tk.mybatis.springboot.model.Satuation;
 import tk.mybatis.springboot.model.vo.ForumVo;
@@ -78,6 +79,13 @@ public class ForumController {
 
         return forumService.getToolTitle();
 
+    }
+
+    @RequestMapping("getBannerList")
+    public Object getBannerList(){
+
+        List<Banner> list=forumService.getBannerList();
+        return list;
     }
 
 }

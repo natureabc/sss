@@ -111,7 +111,7 @@
 
 		//alert($("#formContent").val());
 		var formData=new FormData($("#subForm")[0]);
-		console.log("-=====",formData);
+		//console.log("-=====",formData);
 		$.ajax({
 			type:"post",
 			url:"/manager/addForum",
@@ -124,6 +124,8 @@
 				if(data&&data>0){
 					//$("#viewAddModel").modal('hide');
 					//showList();
+					alert('添加成功');
+					window.location.href="/manager/index";
 				}else{
 					alert('添加失败，请联系管理员')
 				}
@@ -133,7 +135,6 @@
 				alert('网络错误，请联系管理员');
 			}
 		})
-
 	}
 
 
