@@ -36,6 +36,9 @@
         </set>
         where id=#{id}
     </update>
+    <delete id="delBanner">
+        delete from banner where id=#{id}
+    </delete>
 
 
 </mapper>

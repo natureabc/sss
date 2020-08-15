@@ -98,6 +98,12 @@ public class ManagerController {
 
         int count=forumService.addBanner(bannerVo);
         return count;
-
     }
+
+    @RequestMapping("delBanner")
+    public Object delBanner(Integer id){
+        int count=forumService.delBanner(id);
+        return count;
+    }
+
 }

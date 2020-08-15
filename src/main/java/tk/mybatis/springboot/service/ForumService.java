@@ -243,4 +243,10 @@ public class ForumService {
 
 
     }
+
+    public int delBanner(Integer id) {
+
+        int count=bannerMapper.delBanner(id);
+        return count;
+    }
 }

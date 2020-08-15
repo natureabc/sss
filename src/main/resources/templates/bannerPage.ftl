@@ -71,7 +71,8 @@
 						str+="<td><form id='formId"+data[i].id+"'><input type='file' name='imgFile' value='上传轮播图'/>" +
 								"<input type='hidden' id='hiddenSort"+data[i].id+"' name='sort' value='"+data[i].sort+"'/>" +
 								"<input type='hidden' name='id' value='"+data[i].id+"'></form></td>";
-						str+="<td><button class='btn btn-primary' onclick='changeBannerImg("+data[i].id+")'>提交</button></td>";
+						str+="<td><button class='btn btn-primary' onclick='changeBannerImg("+data[i].id+")'>提交</button>" +
+								"<a href='#' class='btn btn-warning' onclick='delBanner("+data[i].id+")'>删除</a></td>";
 						str+="</tr>";
 					}
 					$("#listBody").html(str);
@@ -112,6 +113,30 @@
 		}
 
 
+	}
+
+
+	function delBanner(id){
+	    if(confirm("是否确定要删除吗？")){
+	        $.ajax({
+				type:"post",
+				data:{"id":id},
+				url:"/manager/delBanner",
+				success:function(data){
+				    if(data>0){
+                        alert("删除成功");
+                        showList();
+					}else{
+                        alert("删除失败，请联系管理员");
+					}
+				},
+				error:function (data){
+                    alert("网络错误，请联系管理员");
+				}
+
+			});
+
+		}
 	}
 
 	function setCurrentValue(value,id){
