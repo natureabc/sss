@@ -35,4 +35,8 @@ public interface ForumMapper extends MyMapper<Forum> {
     int delForum(Integer id);
 
     int editForm(ForumVo forum);
+
+    int getAllListCount(@Param("params")Map<String, Object> params);
+
+    List<ForumVo> getAllListNoPage(@Param("params")Map<String, Object> params);
 }

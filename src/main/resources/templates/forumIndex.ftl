@@ -227,10 +227,11 @@
         <div class="serpage">
             <!--<a  href="http://zhangziheng.com" class='guestbookimg'></a>-->
             <div class="pagelist">
-                <span>1</span> <a href="http://www.shsxs.com/page/2.html">2</a> <a
-                        href="http://www.shsxs.com/page/3.html">3</a> <a href="http://www.shsxs.com/page/4.html">4</a>
-                <a href="http://www.shsxs.com/page/5.html">5</a> <a href="http://www.shsxs.com/page/6.html">6</a> <em>...</em>
-                <a href="http://www.shsxs.com/page/63.html" title="尾页">&raquo;</a>
+                <a href="#" title="首页">&laquo;</a>
+                <a href="#">上一页</a>
+                <span>1</span>
+                <a href="#" onclick="nextPage()">下一页</a>
+                <a href="#" title="尾页">&raquo;</a>
                 <span class="pageinfo">第 <b>1</b> 页 / 共 <b>63</b> 页</span>
             </div>
         </div>
@@ -290,21 +291,21 @@
     <div class="space"></div>
     <!--footer-->
     <div class="footer">
-        <div class="copyright">
+      <#--  <div class="copyright">
             Powered by <a href="http://www.emlog.net" title="emlog 5.3.1" target="_blank">Emlog</a>
             Theme by <a href="http://www.shsxs.com/" title="大树诚学" target="_blank">大树诚学</a><br>
             © 2007-2020
-        </div>
+        </div>-->
 
         <div class="right">
-		<span class="navr">
+		<#--<span class="navr">
 	        <a href="http://www.shsxs.com/786.html" target="_blank">广告合作</a> |
 			<a href="http://www.shsxs.com/m" target="_blank">手机版</a> |
 			<a href="http://www.shsxs.com/">三校生之家</a>
 			( <a href="http://www.miibeian.gov.cn" target="_blank">沪ICP备08022002号-6</a> )
                        （<img src="/content/templates/mi2/images/batb.png"><a
                     href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31010702003138" target="_blank">沪公网安备 31010702003138号</a>）
-		</span><br/>
+		</span>--><br/>
             <span>2020年06月06日| <script>
 var _hmt = _hmt || [];
 (function () {
@@ -335,26 +336,33 @@ var _hmt = _hmt || [];
 
 </body>
     <script type="text/javascript">
-
-
+        var currentPage=1;
+        var pageSize=10;
 
         $(function (){
-            showList();
+            showList(null,null,currentPage,pageSize);
             getSatuationList();
             showKeywordList();
             showlabelList();
             showToolTitle();
             getBanner();
-        })
+        });
 
-        function showList(labelId,keywordId){
+
+        function nextPage(){
+            currentPage+=1;
+            showList(null,null,currentPage,pageSize);
+        }
+
+        function showList(labelId,keywordId,currentPage,pageSize){
             $.ajax({
                 type:"post",
                 url:"/forum/getAllList",
-                data:{"labelId":labelId,"keywordId":keywordId},
-                success:function(data){
-                    if(data){
-                        if(data.length>0){
+                data:{"labelId":labelId,"keywordId":keywordId,"page":currentPage,"rows":pageSize},
+                success:function(result){
+                    if(result){
+                        if(result.list.length>0){
+                            var data=result.list;
                             var str="";
                             for(var i=0;i<data.length;i++){
                                 var labels="";

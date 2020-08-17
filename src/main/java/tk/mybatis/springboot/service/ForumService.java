@@ -8,10 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
 import tk.mybatis.mapper.util.StringUtil;
 import tk.mybatis.springboot.mapper.*;
-import tk.mybatis.springboot.model.Banner;
-import tk.mybatis.springboot.model.ForumLabel;
-import tk.mybatis.springboot.model.Keyword;
-import tk.mybatis.springboot.model.Satuation;
+import tk.mybatis.springboot.model.*;
 import tk.mybatis.springboot.model.vo.BannerVo;
 import tk.mybatis.springboot.model.vo.ForumVo;
 import tk.mybatis.springboot.model.vo.Label;
@@ -45,11 +42,20 @@ public class ForumService {
     @Value("${sys.img.uploadPath}")
     private String uploadPath;
 
-
-    public List<ForumVo> getAllList(Integer labelId,Integer keywordId) {
+    public List<ForumVo> getAllList(Integer labelId, Integer keywordId){
         Map<String,Object> params=new HashMap<>();
         params.put("labelId",labelId);
         params.put("keywordId",keywordId);
+        List<ForumVo> list=forumMapper.getAllListNoPage(params);
+        return list;
+    }
+
+    public PageBean getAllList(Integer labelId, Integer keywordId, PageBean pageBean) {
+        Map<String,Object> params=new HashMap<>();
+        params.put("labelId",labelId);
+        params.put("keywordId",keywordId);
+        params.put("pageBean",pageBean);
+        int count=forumMapper.getAllListCount(params);
        List<ForumVo> list=forumMapper.getAllList(params);
        if(CollectionUtils.isNotEmpty(list)){
            for(ForumVo vo:list){
@@ -65,7 +71,7 @@ public class ForumService {
                }
            }
        }
-       return  list;
+       return  new PageBean(pageBean.getPage(), pageBean.getRows(), count, list);
     }
 
     public ForumVo getForumDetailById(Integer forumId) {

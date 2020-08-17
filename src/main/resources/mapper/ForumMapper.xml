@@ -80,6 +80,8 @@
                 and keyword_id =#{params.keywordId}
             </if>
         </where>
+        limit
+        #{params.pageBean.resultNum},#{params.pageBean.rows}
     </select>
     <select id="getById" resultType="tk.mybatis.springboot.model.vo.ForumVo">
         select * from forum where id=#{forumId}
@@ -101,5 +103,30 @@
     </select>
     <select id="getLabelListTitle" resultType="tk.mybatis.springboot.model.vo.Label">
         select * from label where is_title=1
+    </select>
+    <select id="getAllListCount" resultType="java.lang.Integer">
+        select count(0) from forum
+        <where>
+            and is_del=0
+            <if test="params.labelId!=null and params.labelId!=''">
+                and id in(select forum_id from forum_label where label_id =#{params.labelId})
+            </if>
+            <if test="params.keywordId!=null and params.keywordId!=''">
+                and keyword_id =#{params.keywordId}
+            </if>
+        </where>
+    </select>
+    <select id="getAllListNoPage" resultType="tk.mybatis.springboot.model.vo.ForumVo">
+        select * from forum
+        <where>
+            and is_del=0
+            <if test="params.labelId!=null and params.labelId!=''">
+                and id in(select forum_id from forum_label where label_id =#{params.labelId})
+            </if>
+            <if test="params.keywordId!=null and params.keywordId!=''">
+                and keyword_id =#{params.keywordId}
+            </if>
+        </where>
+
     </select>
 </mapper>
