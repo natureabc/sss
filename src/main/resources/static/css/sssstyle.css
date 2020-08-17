@@ -32,14 +32,14 @@
     padding:2px 5px;
     font-weight:bold;
 }
-.pagelist a{
+.pagelist button{
     border:1px solid #ccc;
     color:#999;
     display:inline;
     margin:0 3px;
     padding:2px 5px;
 }
-.pagelist a:hover {
+.pagelist button:hover {
     -moz-background-clip:border;
     -moz-background-inline-policy:continuous;
     -moz-background-origin:padding;

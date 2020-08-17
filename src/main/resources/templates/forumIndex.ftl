@@ -227,12 +227,12 @@
         <div class="serpage">
             <!--<a  href="http://zhangziheng.com" class='guestbookimg'></a>-->
             <div class="pagelist">
-                <a href="#" title="首页">&laquo;</a>
-                <a href="#">上一页</a>
-                <span>1</span>
-                <a href="#" onclick="nextPage()">下一页</a>
-                <a href="#" title="尾页">&raquo;</a>
-                <span class="pageinfo">第 <b>1</b> 页 / 共 <b>63</b> 页</span>
+                <button  onclick="firstPage()" title="首页">&laquo;</button>
+                <button onclick="prePage()">上一页</button>
+                <span id="curPage"></span>
+                <button onclick="nextPage()">下一页</button>
+                <button onclick="lastPage()"  title="尾页">&raquo;</button>
+                <span class="pageinfo">第 <b id="firstPage"></b> 页 / 共 <b id="endPage"></b> 页</span>
             </div>
         </div>
     </div><!-- end #content-->
@@ -338,6 +338,9 @@ var _hmt = _hmt || [];
     <script type="text/javascript">
         var currentPage=1;
         var pageSize=10;
+        var pageCount=0;
+
+
 
         $(function (){
             showList(null,null,currentPage,pageSize);
@@ -350,8 +353,28 @@ var _hmt = _hmt || [];
 
 
         function nextPage(){
-            currentPage+=1;
-            showList(null,null,currentPage,pageSize);
+            if(currentPage<pageCount){
+                currentPage+=1;
+                showList(null,null,currentPage,pageSize);
+            }
+        }
+
+        function prePage(){
+            if(currentPage>1){
+                currentPage-=1;
+                showList(null,null,currentPage,pageSize);
+            }
+
+        }
+
+        function firstPage(){
+
+            showList(null,null,1,pageSize);
+        }
+
+        function lastPage(){
+
+            showList(null,null,pageCount,pageSize);
         }
 
         function showList(labelId,keywordId,currentPage,pageSize){
@@ -361,6 +384,12 @@ var _hmt = _hmt || [];
                 data:{"labelId":labelId,"keywordId":keywordId,"page":currentPage,"rows":pageSize},
                 success:function(result){
                     if(result){
+                        pageCount=result.pageCount;
+                        currentPage=result.page;
+                        pageSize=result.rows;
+                        $("#firstPage").html(result.page);
+                        $("#endPage").html(result.pageCount);
+                        $("#curPage").html(result.page);
                         if(result.list.length>0){
                             var data=result.list;
                             var str="";
@@ -411,6 +440,7 @@ var _hmt = _hmt || [];
                     }
                 },
                 error:function(data){
+                    console.log("forumIndex showList()网络错误，请联系管理员",data)
                 }
             })
         }
@@ -515,7 +545,7 @@ var _hmt = _hmt || [];
                         var str="<li class='current-cat'><a href='/forum/index'>首页</a></li>";
                        // console.log(data)
                         for(var i=0;i<data.length;i++){
-                            str+="<li class='common'><a href='/forum/index'>"+data[i].labelName+"</a></li>"
+                            str+="<li class='common'><a  onclick='toPageByLabel("+data[i].id+")'>"+data[i].labelName+"</a></li>"
                         }
                         $("#nv").html(str);
                     }

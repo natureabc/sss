@@ -17,6 +17,7 @@
               href="/manager/toAddPage"  >新建帖子</a>-->
 			<a  class='btn btn-primary' href="/manager/toAddPage">新建帖子</a>
 			<a  class='btn btn-primary' href="/manager/toBannerPage"  >编辑轮播图</a>
+			<a  class='btn btn-primary' href="/manager/toLabelPage"  >编辑标签</a>
 		</div>
 
 	</div>

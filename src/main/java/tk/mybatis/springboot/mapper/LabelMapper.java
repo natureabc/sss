@@ -7,4 +7,5 @@ import tk.mybatis.springboot.util.MyMapper;
 
 @Mapper
 public interface LabelMapper extends MyMapper<Label> {
+    int editLabel(Label label);
 }

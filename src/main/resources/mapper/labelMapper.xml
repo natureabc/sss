@@ -24,13 +24,16 @@
   -->
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="tk.mybatis.springboot.mapper.ForumLabelMapper">
-    <update id="updateLabelName">
-        update forum_label set label_name=#{labelName}
-        where label_id=#{labelId}
+<mapper namespace="tk.mybatis.springboot.mapper.LabelMapper">
+    <update id="editLabel">
+        update label
+        <set>
+            <if test="labelName!=null and labelName!=''">
+                label_name=#{labelName},
+            </if>
+            is_title=#{isTitle},
+        </set>
+        where id=#{id}
     </update>
 
-    <delete id="deleteByForumId">
-        delete from forum_label where forum_id=#{forumId}
-    </delete>
 </mapper>

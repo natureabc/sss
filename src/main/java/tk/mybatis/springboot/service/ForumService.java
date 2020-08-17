@@ -47,6 +47,20 @@ public class ForumService {
         params.put("labelId",labelId);
         params.put("keywordId",keywordId);
         List<ForumVo> list=forumMapper.getAllListNoPage(params);
+        if(CollectionUtils.isNotEmpty(list)){
+            for(ForumVo vo:list){
+                Example example = new Example(ForumLabel.class);
+                Example.Criteria criteria = example.createCriteria();
+                criteria.andEqualTo("forumId",vo.getId());
+                List<ForumLabel> fllist=forumLabelMapper.selectByExample(example);
+                vo.setLabelList(fllist);
+                if(StringUtil.isNotEmpty(vo.getMainPic())){
+                    // String path=FileConverBase64.getbase64Url(imgPath+vo.getMainPic());
+                    String path=imgPath+vo.getMainPic();
+                    vo.setMainPic(path);
+                }
+            }
+        }
         return list;
     }
 
@@ -253,6 +267,29 @@ public class ForumService {
     public int delBanner(Integer id) {
 
         int count=bannerMapper.delBanner(id);
+        return count;
+    }
+
+    public int addLabel(Label label) {
+
+        int count=labelMapper.insert(label);
+        return count;
+    }
+
+    public int delLabel(Integer id) {
+        int count=labelMapper.deleteByPrimaryKey(id);
+        return count;
+    }
+
+    public int editLabel(Label label) {
+
+        int count=labelMapper.editLabel(label);
+        if(count>0){
+            ForumLabel forumLabel=new ForumLabel();
+            forumLabel.setLabelName(label.getLabelName());
+            forumLabel.setLabelId(label.getId());
+            forumLabelMapper.updateLabelName(forumLabel);
+        }
         return count;
     }
 }

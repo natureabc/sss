@@ -4,19 +4,9 @@ import tk.mybatis.springboot.model.BaseEntity;
 
 public class Label extends BaseEntity {
 
-    private Integer id;
     private String labelName;
     private Integer isTitle;
 
-    @Override
-    public Integer getId() {
-        return id;
-    }
-
-    @Override
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getLabelName() {
         return labelName;
