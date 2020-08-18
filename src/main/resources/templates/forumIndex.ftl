@@ -412,9 +412,13 @@ var _hmt = _hmt || [];
                                     "                <div class='box'>" +
                                     "                    <div class='title'>" +
                                     "                        <a href='#' rel='bookmark'" +
-                                    "                           title='"+data[i].title+"'  onclick='toForumDetail("+data[i].id+")'>" +
-                                    "                                   <font color=#ff0000 style=font-weight:550>"+data[i].title+"</font></a>" +
-                                    "                    </div>" +
+                                    "                           title='"+data[i].title+"'  onclick='toForumDetail("+data[i].id+")'>";
+                                if(data[i].isHot==1){
+                                    str+="<font color=#ff0000 style=font-weight:550>"+data[i].title+"</font></a>"
+                                }else{
+                                    str+="<font  style=font-weight:550>"+data[i].title+"</font></a>"
+                                }
+                                str+="         </div>" +
                                     "                    <div class='read_total'><a href='#' onclick='toPageKeyword("+data[i].keywordId+")'>" +
                                     "                        "+data[i].keyWord+"</a>"+
                                     "                        标签: "+labels+

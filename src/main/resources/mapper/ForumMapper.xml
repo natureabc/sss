@@ -80,6 +80,7 @@
                 and keyword_id =#{params.keywordId}
             </if>
         </where>
+        order by is_hot desc
         limit
         #{params.pageBean.resultNum},#{params.pageBean.rows}
     </select>

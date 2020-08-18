@@ -75,4 +75,6 @@ sys:
    img:
      uploadPath: D:/img/
      readPath: /img/
+#     uploadPath: /home/img/
+#     readPath: http://121.36.9.237/
 #    params: count=countSql
