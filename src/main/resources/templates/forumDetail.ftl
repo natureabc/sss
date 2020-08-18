@@ -39,7 +39,7 @@
 <div id="hd">
     <div class="wp">
         <div class="hdc cl">
-            <h1 class="logo"><img src="/img/fkbf.jpg" style="width:300px;height:50px;"/></h1>
+            <h1 class="logo"><img src="${img}/fkbf.jpg" style="width:300px;height:50px;"/></h1>
             <div class="login"><!--start login-->
                 <script type="text/javascript" src="http://www.shsxs.com//content/plugins/em_ad/em_ad_js.php?pos=1"></script><!--头部banner百度广告位-->
             </div><!--end login-->
@@ -106,18 +106,18 @@
         <div class="side_box">
             <h3><span>logo</span></h3>
             <div>
-                <img src="/img/ewm.jpg" style="width:250px;height:250px"/>
+                <img src="${img}/ewm.jpg" style="width:250px;height:250px"/>
             </div>
         </div>
         <div class="side_box">
             <div>
-                <img src="/img/gg.jpg" style="width:250px;height:250px"/>
+                <img src="${img}/gg.jpg" style="width:250px;height:250px"/>
             </div>
         </div>
         <div class="side_box">
             <h3><span>加入我们</span></h3>
             <div>
-                <img src="/img/ewm.jpg" style="width:250px;height:250px"/>
+                <img src="${img}/ewm.jpg" style="width:250px;height:250px"/>
             </div>
         </div>
         <div id="twitter" class="side_box">

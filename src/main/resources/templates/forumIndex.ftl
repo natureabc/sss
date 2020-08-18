@@ -120,9 +120,6 @@
             <a href="#" >
                 <div class="banner">
                     <ul class="banner-auto" id="imgBanner">
-                        <li><img src="/img/1.jpg" style="width:960px;height:200px"/></li>
-                        <li><img src="/img/2.jpg" style="width:960px;height:200px"/></li>
-                        <li><img src="/img/3.jpg" style="width:960px;height:200px"/></li>
                     </ul>
                 </div>
             </a>
@@ -219,8 +216,7 @@
 
         <!--日志列表-->
         <div id="allForumList">
-
-
+                <img id="loadingGif" src="${img}/timg.gif"/>
         </div>
 
 
@@ -243,18 +239,18 @@
         <div class="side_box">
             <h3><span>logo</span></h3>
             <div>
-               <img src="/img/ewm.jpg" style="width:250px;height:250px"/>
+               <img src="${img}/ewm.jpg" style="width:250px;height:250px"/>
             </div>
         </div>
         <div class="side_box">
             <div>
-                <img src="/img/gg.jpg" style="width:250px;height:250px"/>
+                <img src="${img}/gg.jpg" style="width:250px;height:250px"/>
             </div>
         </div>
         <div class="side_box">
             <h3><span>加入我们</span></h3>
             <div>
-                <img src="/img/ewm.jpg" style="width:250px;height:250px"/>
+                <img src="${img}/ewm.jpg" style="width:250px;height:250px"/>
             </div>
         </div>
         <div id="twitter" class="side_box">
@@ -440,7 +436,7 @@ var _hmt = _hmt || [];
                         }else{
                             $("#allForumList").html("");
                         }
-
+                        $("#loadingGif").css("display","none");
                     }
                 },
                 error:function(data){

@@ -1,6 +1,7 @@
 
 package tk.mybatis.springboot.controller;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -19,6 +20,7 @@ public class LoginController {
     @Resource
     private ManagerController managerController;
 
+
     @RequestMapping("toLogin")
     public ModelAndView toLogin(){
         return new ModelAndView("login");
@@ -34,6 +36,7 @@ public class LoginController {
             return managerController.toIndex();
         }else{
             request.getSession().setAttribute("error","用户名或密码错误");
+
             return new ModelAndView("login");
         }
     }

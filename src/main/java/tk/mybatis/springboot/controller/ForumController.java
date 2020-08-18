@@ -1,6 +1,7 @@
 package tk.mybatis.springboot.controller;
 
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,7 @@ import tk.mybatis.springboot.model.vo.ForumVo;
 import tk.mybatis.springboot.service.ForumService;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
@@ -24,10 +26,13 @@ public class ForumController {
     @Resource
     private ForumService forumService;
 
-    @RequestMapping("index")
-    public ModelAndView toIndex(){
-        return new ModelAndView("forumIndex");
+    @Value("${sys.img.readPath}")
+    private String imgPath;
 
+    @RequestMapping("index")
+    public ModelAndView toIndex(HttpServletRequest request){
+        request.getSession().setAttribute("img",imgPath);
+        return new ModelAndView("forumIndex");
     }
 
     @RequestMapping("getAllList")
