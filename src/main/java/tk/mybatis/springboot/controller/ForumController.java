@@ -6,6 +6,8 @@ import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -32,7 +34,7 @@ import java.util.Random;
 @RequestMapping("forum")
 public class ForumController {
 
-
+    private static final Logger log = LoggerFactory.getLogger(ForumController.class);
     @Resource
     private ForumService forumService;
 
@@ -106,16 +108,16 @@ public class ForumController {
         return list;
     }
 
-
+   // String token="9a8ea002-c842-40d3-8f5d-5961143abc404";
     @RequestMapping("testRequest")
-    public void testRequest(){
+    public void testRequest(String token){
         int count=0;
-        for(int i=0;i<5000;i++){
+        for(int i=0;i<120000;i++){
             try{
-                Thread.sleep(50);
-                testQuestion();
+               // Thread.sleep(50);
+                testQuestion(token);
                 count++;
-                System.out.println(count);
+                log.info("调用数量=="+count);
             }catch (Exception e){
                 e.printStackTrace();
             }
@@ -123,10 +125,10 @@ public class ForumController {
 
     }
 
-    String token="9a8ea002-c842-40d3-8f5d-5961143abc404";
 
 
-    public void testQuestion(){
+
+    public void testQuestion(String token){
         try {
             OkHttpClient client = new OkHttpClient().newBuilder()
                     .build();
@@ -142,10 +144,10 @@ public class ForumController {
             String bodyStr=response.body().string();
             Question q= JSON.parseObject(bodyStr,Question.class);
             if(!q.getError_no().equals("0")){
-                getCheckCode();
+                getCheckCode(token);
             }
-            System.out.println(bodyStr);
-                testAnswer(q.getResult().getQuestion_no(),null);
+            log.info(bodyStr);
+                testAnswer(q.getResult().getQuestion_no(),token);
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -153,7 +155,7 @@ public class ForumController {
     }
 
    // @RequestMapping("testAnswer")
-    public void testAnswer(String no,String option){
+    public void testAnswer(String no,String token){
         try {
             OkHttpClient client = new OkHttpClient().newBuilder()
                     .build();
@@ -172,20 +174,19 @@ public class ForumController {
             String bodyStr=response.body().string();
             Question q= JSON.parseObject(bodyStr,Question.class);
             if(!q.getError_no().equals("0")){
-                getCheckCode();
+                getCheckCode(token);
             }
-            System.out.println(133333);
         }catch (Exception e){
             e.printStackTrace();
         }
     }
 
     @RequestMapping("testCheck")
-    public void testCheck(){
-        getCheckCode();
+    public void testCheck(String token){
+        getCheckCode(token);
     }
 
-    public void getCheckCode(){
+    public void getCheckCode(String token){
         try {
             OkHttpClient client = new OkHttpClient().newBuilder()
                     .build();
@@ -200,19 +201,19 @@ public class ForumController {
             Response response = client.newCall(request).execute();
             String bodyStr=response.body().string();
             Question q= JSON.parseObject(bodyStr,Question.class);
-            System.out.println(bodyStr);
+            log.info(bodyStr);
             String base64Str=q.getResult().getJepg_byte_base64();
-            int result=checkCode(base64Str);
+            int result=checkCode(base64Str,token);
             if(result==1){
                 //验证成功后需要初始化
-                initCheckCode();
+                initCheckCode(token);
             }
         }catch (Exception e){
             e.printStackTrace();
         }
     }
 
-    public int checkCode(String base64Str){
+    public int checkCode(String base64Str,String token){
 
         try {
 
@@ -242,10 +243,10 @@ public class ForumController {
             String bodyStr=response.body().string();
             Question q= JSON.parseObject(bodyStr,Question.class);
             if(q.getError_no().equals("0")){
-                System.out.println("验证成功xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+                log.info("验证成功xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
                 return 1;
             }else{
-                System.out.println("验证失败===================================");
+                log.info("验证失败===================================");
                 return 0;
             }
 
@@ -255,7 +256,7 @@ public class ForumController {
         }
     }
 
-    public void initCheckCode(){
+    public void initCheckCode(String token){
         try {
             OkHttpClient client = new OkHttpClient().newBuilder()
                     .build();
@@ -269,7 +270,7 @@ public class ForumController {
                     .build();
             Response response = client.newCall(request).execute();
             String bodyStr = response.body().string();
-            System.out.println(bodyStr);
+            log.info(bodyStr);
         }catch (Exception e){
             e.printStackTrace();
         }
