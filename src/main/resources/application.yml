@@ -32,13 +32,15 @@ mybatis:
 #    reasonable: true
 #    supportMethodsArguments: true
 spring:
+    application:
+        name: sss
     datasource:
         type: com.alibaba.druid.pool.DruidDataSource
         driver-class-name: com.mysql.cj.jdbc.Driver
         druid:
             url: jdbc:mysql://127.0.0.1:3306/sss?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&serverTimezone=Asia/Shanghai
             username: root
-            password: root
+            password:
             initial-size: 20
             max-active: 300
             min-idle: 10
@@ -83,3 +85,4 @@ logging:
   path: /data/java/logs
   file:
     max-size: 300MB
+    max-history: 90
