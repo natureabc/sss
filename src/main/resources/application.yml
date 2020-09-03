@@ -2,9 +2,9 @@ server:
     port: 9090
 #    context-path: /
 
-logging:
-    level:
-        tk.mybatis: DEBUG
+#logging:
+#    level:
+#        tk.mybatis: DEBUG
 
 
 #    mvc:
@@ -73,8 +73,13 @@ spring:
 
 sys:
    img:
-     uploadPath: D:/img/
-     readPath: /img/
-#     uploadPath: /home/img/
-#     readPath: http://121.36.9.237/
+#     uploadPath: D:/img/
+#     readPath: /img/
+     uploadPath: /home/img/
+     readPath: http://121.36.9.237/
 #    params: count=countSql
+
+logging:
+  path: /data/java/logs
+  file:
+    max-size: 300MB

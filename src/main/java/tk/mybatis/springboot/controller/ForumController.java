@@ -146,7 +146,7 @@ public class ForumController {
             if(!q.getError_no().equals("0")){
                 getCheckCode(token);
             }
-            log.info(bodyStr);
+          //  log.info(bodyStr);
                 testAnswer(q.getResult().getQuestion_no(),token);
         }catch (Exception e){
             e.printStackTrace();
